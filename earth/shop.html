@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Shop — Earth Masia</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #2d8f7c;
+            --accent: #ff7e30;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Navbar (Matches Index) */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+            font-size: 1.8rem;
+            display: flex; align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 50px; width: 50px; object-fit: contain; margin-right: 10px;
+            border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 8px;
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            padding: 8px 16px !important;
+            border-radius: 6px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent) !important;
+            background: rgba(255, 126, 48, 0.1);
+        }
+
+        /* Shop Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.9), rgba(45, 143, 124, 0.9)), url("images/construction.png");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: -80px;
+        }
+
+        .page-header h1 { color: white; font-size: 3rem; }
+
+        /* Product Styles */
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            transition: var(--transition);
+            background: #fff;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary);
+        }
+
+        .product-img {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #198754;
+            font-size: 1.2rem;
+        }
+
+        /* Floating Cart Icon */
+        #floatingCart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(255, 126, 48, 0.4);
+            cursor: pointer;
+        }
+
+        .category-title {
+            margin-top: 50px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home')">
+                <img src="images/logo.jpg" width="50" height="50" viewBox="0 0 50 50"%3E%3Crect width="50" height="50" fill="%231a5f7a"/%3E%3Ctext x="50%25" y="50%25" dy=".3em" text-anchor="middle" fill="white" font-family="Arial" font-size="20"%3EEM%3C/text%3E%3C/svg%3E" alt="Earth Masia Logo">
+                Earth Masia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('about')">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('services')">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('contact')">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="#" class="btn btn-main btn-sm" onclick="showPage('contact')">
+                            <i class="fas fa-phone-alt me-1"></i> Get Quote
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Earth Masia Safety Shop</h1>
+            <p class="lead">Professional PPE, site safety equipment, fire protection & safety services</p>
+        </div>
+    </section>
+
+    <a href="checkout.html" id="floatingCart">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search product...">
+                </div>
+                <div class="col-md-6">
+                    <select id="categoryFilter" class="form-select form-select-lg">
+                        <option value="all">All Categories</option>
+                        <option value="fire">Fire & Emergency</option>
+                        <option value="ppe">Safety PPE</option>
+                        <option value="site">Site Safety</option>
+                        <option value="services">Add-On Services</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4" id="productGrid">
+
+                <div class="col-12"><h3 class="category-title">🔥 Fire & Emergency Equipment</h3></div>
+                
+                <div class="col-md-4 product-item" data-category="fire" data-name="fire blankets">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Fire Blankets">
+                        <h5>Fire Blankets</h5>
+                        <p class="price">ZAR 320</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="fire" data-name="fire beaters">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Fire Beaters">
+                        <h5>Fire Beaters (Grassland)</h5>
+                        <p class="price">ZAR 450</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="fire" data-name="evacuation signage">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Evacuation Signage">
+                        <h5>Evacuation & Muster Point Signage</h5>
+                        <p class="price">ZAR 280</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="fire" data-name="emergency horns">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Emergency Horns">
+                        <h5>Emergency Evacuation Horns</h5>
+                        <p class="price">ZAR 780</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="fire" data-name="fire hose reels">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Fire Hose Reels">
+                        <h5>Fire Hose Reels & Cabinets</h5>
+                        <p class="price">ZAR 4850</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-12"><h3 class="category-title">🔧 Safety PPE</h3></div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="hard hats">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Hard Hats">
+                        <h5>Hard Hats (All Colours)</h5>
+                        <p class="price">ZAR 120</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="safety boots">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Safety Boots">
+                        <h5>Safety Boots (Steel Toe / Gumboots)</h5>
+                        <p class="price">ZAR 950</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="reflective vests">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Reflective Vests">
+                        <h5>Reflective Vests & Jackets</h5>
+                        <p class="price">ZAR 180</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="gloves">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Gloves">
+                        <h5>Gloves (Chemical / Cut / Leather)</h5>
+                        <p class="price">ZAR 85</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="goggles">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Safety Goggles">
+                        <h5>Safety Goggles & Face Shields</h5>
+                        <p class="price">ZAR 140</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="ear protection">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Ear Protection">
+                        <h5>Ear Plugs & Ear Muffs</h5>
+                        <p class="price">ZAR 90</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="respiratory masks">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Respiratory Masks">
+                        <h5>Respiratory Masks (N95)</h5>
+                        <p class="price">ZAR 160</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-item" data-category="ppe" data-name="harness">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img" alt="Full Body Harness">
+                        <h5>Full Body Harness & Fall Arrest</h5>
+                        <p class="price">ZAR 1850</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-12"><h3 class="category-title">🚧 Site Safety Equipment</h3></div>
+                
+                <div class="col-md-4 product-item" data-category="site" data-name="first aid">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img">
+                        <h5>First Aid Kits (Reg. 3)</h5>
+                        <p class="price">ZAR 1250</p>
+                        <button class="btn btn-success w-100">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-12"><h3 class="category-title">🔑 Add-On Services</h3></div>
+                
+                <div class="col-md-4 product-item" data-category="services" data-name="audit">
+                    <div class="product-card text-center">
+                        <img src="images/product-placeholder.png" class="product-img">
+                        <h5>On-Site Safety Audit</h5>
+                        <p class="price">Request Quote</p>
+                        <button class="btn btn-success w-100">Inquire</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Preserving your search and filter functionality exactly
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const products = document.querySelectorAll(".product-item");
+
+        function filterProducts() {
+            const search = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+
+            products.forEach(p => {
+                const name = p.dataset.name.toLowerCase();
+                const cat = p.dataset.category;
+                const show = name.includes(search) && (category === "all" || cat === category);
+                p.style.display = show ? "block" : "none";
+            });
+        }
+
+        searchInput.addEventListener("keyup", filterProducts);
+        categoryFilter.addEventListener("change", filterProducts);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
